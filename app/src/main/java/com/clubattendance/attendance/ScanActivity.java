@@ -5,7 +5,11 @@ package com.clubattendance.attendance;
 // Android Imports
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.SurfaceView;
 import android.widget.TextView;
+
+import com.google.android.gms.vision.text.TextRecognizer;
 
 // Java Imports
 
@@ -18,11 +22,14 @@ public class ScanActivity extends AppCompatActivity {
 
     /* ------------------------- DATA & VARS ------------------------- */
 
-    // Logic Vars
+    // Constants
     public static final int REQUEST_IMG_CAPTURE = 1;
+    private static final String TAG = ScanActivity.class.getSimpleName(); //
+    // For debugging
 
     // Display Vars
-    private TextView capturedText;
+    private SurfaceView surfaceView;
+    private TextView textView;
 
     /* ------------------------- APP LIFECYCLE METHODS ------------------------- */
 
@@ -32,8 +39,18 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-        // grab display vars
-        capturedText = (TextView) findViewById(R.id.captured_text);
+        // Bind UI elements to vars
+        surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
+        textView = (TextView) findViewById(R.id.textView);
+
+        // Create the text recognition engine
+        TextRecognizer textRecognizer = new TextRecognizer().Builder
+                (getApplicationContext()); // Pass in current context as param
+
+        // Log if recognizer cannot run
+        if (!textRecognizer.isOperational())
+            Log.w(TAG + " - ScanActivity", "Text recognition dependency not " +
+                    "available.");
     }
 
     /* ------------------------- HELPER METHODS ------------------------- */

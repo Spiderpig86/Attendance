@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.clubattendance.attendance">
     <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
+        android:name="android.permissions.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Add the text recognition library to dependencies -->
+        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES"
+                   android:value="ocr" />
     </application>
 
 </manifest>

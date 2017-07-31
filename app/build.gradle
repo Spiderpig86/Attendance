@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.clubattendance.attendance"
-        minSdkVersion 19
+        minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -28,4 +28,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.android.gms:play-services-vision:11.0.4'
     testCompile 'junit:junit:4.12'
+
+    // Text Recognition Service
+    compile 'com.google.android.gms:play-services-vision:9.8.0'
 }
