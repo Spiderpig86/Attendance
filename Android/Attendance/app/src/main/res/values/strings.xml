@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Attendance</string>
+    <string name="welcome">Welcome to Bitter!</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email_hint">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="member">Already a member? Login now!</string>
+    <string name="signup">No account yet? Register now!</string>
+    <string name="password_req">at least 1 uppercase, 1 lowercase, 1 number, and 1 special symbol</string>
+    <string name="logging_in">Logging In...</string>
+    <string name="logging_out">Logging Out...</string>
+    <string name="creating_account">Creating Account...</string>
+    <string name="deleting_account">Deleting Account...</string>
+    <string name="login_failed">The combination of email and password is incorrect. </string>
 </resources>

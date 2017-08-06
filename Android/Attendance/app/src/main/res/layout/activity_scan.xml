@@ -9,7 +9,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingBottom="0dp"
-    tools:context="com.clubattendance.attendance.ScanActivity">
+    tools:context="com.clubattendance.attendance.activities.ScanActivity">
 
 
     <!-- View used to interface with camera -->
