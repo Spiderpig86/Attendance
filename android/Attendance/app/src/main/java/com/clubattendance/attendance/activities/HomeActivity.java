@@ -5,16 +5,23 @@ package com.clubattendance.attendance.activities;
 // Android Imports
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 // Java Imports
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 // Project Imports
 import com.clubattendance.attendance.R;
+import com.clubattendance.attendance.fragments.*;
+
+import org.json.JSONObject;
 
 /* ------------------------- CLASS DEFINITION ------------------------- */
 
@@ -25,9 +32,14 @@ public class HomeActivity extends AppCompatActivity {
 
     // Constants
     private static final String TAG = HomeActivity.class.getSimpleName();
+    public static final String EXISTING_SESSION = "Continue?";
 
-    // Display Vars
-    private Button mainButton;
+    // Logic & Data Vars
+    private static JSONObject meetingData;
+
+    // Fragment Vars
+    private FragmentManager fragmentManager;
+    private MenuFragment menuFragment;
 
 
     /* ------------------------- APP LIFECYCLE METHODS ------------------------- */
@@ -38,15 +50,20 @@ public class HomeActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         // sets the layout and calls the super's onCreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // bind the display vars
-        mainButton = (Button) findViewById(R.id.main_button);
-
-        // determine what the button should display
-        determineExistingSession();
+        // setup the fragment vars
+        fragmentManager = getSupportFragmentManager();
+        menuFragment = new MenuFragment();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, menuFragment);
+        Bundle args = new Bundle();
+        args.putBoolean(EXISTING_SESSION,determineExistingSession());
+        menuFragment.setArguments(args);
+        fragmentTransaction.commit();
 
     }
 
@@ -54,21 +71,18 @@ public class HomeActivity extends AppCompatActivity {
 
     /* ------------------------- HELPER METHODS ------------------------- */
 
-    private void determineExistingSession(){
+    private boolean determineExistingSession(){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdyFormat = new SimpleDateFormat("MM-dd-yyyy");
         String strDate = mdyFormat.format(calendar.getTime());
         String fileName = strDate + ".json";
         File file = new File(this.getFilesDir(), fileName);
         if (file.exists()){
-            try {
-                // change the main button accordingly; do we open the file and pass it along?
-            } catch(Exception e){
-                // do nothing
-            }
+
+            return true;
         }
         else {
-            // create a new file
+            return false;
         }
     }
 }
