@@ -21,15 +21,12 @@ import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+// Java Imports
 import java.io.IOException;
 import java.util.Scanner;
 
-import com.clubattendance.attendance.R; // Import resources file
-
-// Java Imports
-
 // Project Imports
-
+import com.clubattendance.attendance.R;
 
 /* ------------------------- CLASS DEFINITION ------------------------- */
 
