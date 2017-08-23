@@ -20,6 +20,7 @@ Developing a working application to capture ID card and extract relevant informa
 	* [Text Recognition API](https://developers.google.com/vision/text-overview)
 - [ ] Format results and add corrections to remove invalid chars from name/id
 - [ ] Write member data (name, id, email, timestamp) to json file and export it to some location.
+	* File name will be the current date. Loading the app will enable/disable the continue button depending if the file exists.
 
 ### iOS
 - [ ] Make a working application (plain activity).
