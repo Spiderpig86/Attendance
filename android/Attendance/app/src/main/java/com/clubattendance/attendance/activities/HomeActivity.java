@@ -4,6 +4,7 @@ package com.clubattendance.attendance.activities;
 
 // Android Imports
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,8 @@ import android.widget.Button;
 // Java Imports
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +24,7 @@ import java.util.Calendar;
 import com.clubattendance.attendance.R;
 import com.clubattendance.attendance.fragments.*;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /* ------------------------- CLASS DEFINITION ------------------------- */
@@ -76,12 +80,19 @@ public class HomeActivity extends AppCompatActivity {
         SimpleDateFormat mdyFormat = new SimpleDateFormat("MM-dd-yyyy");
         String strDate = mdyFormat.format(calendar.getTime());
         String fileName = strDate + ".json";
-        File file = new File(this.getFilesDir(), fileName);
-        if (file.exists()){
-
+        AssetManager assetManager = getAssets();
+        InputStream inputStream = null;
+        try {
+            inputStream = assetManager.open(fileName);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            String json = new String(buffer, "UTF-8");
+            meetingData = new JSONObject(json);
             return true;
-        }
-        else {
+        } catch (Exception ioe){
+            meetingData = new JSONObject();
             return false;
         }
     }

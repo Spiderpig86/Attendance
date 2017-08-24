@@ -15,10 +15,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
+// JSON Imports
+import org.json.JSONObject;
 
 // Project Imports
 import com.clubattendance.attendance.R;
 import com.clubattendance.attendance.activities.HomeActivity;
+
+
 
 
 /* ----------------------------- CLASS DEF ----------------------------- */
@@ -67,9 +71,10 @@ public class MenuFragment extends Fragment {
 
     private void changeMainButton(boolean existingSession){
         if (existingSession){
+            mainButton.setText(getString(R.string.menufrag_continue));
         }
         else {
-
+            mainButton.setText(getString(R.string.menufrag_new));
         }
     }
 
