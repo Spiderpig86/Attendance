@@ -39,7 +39,7 @@ public class MenuFragment extends Fragment {
     private static JSONObject meetingData;
 
     // Display Vars
-    private Button mainButton;
+    private Button mainButton, scanButton, editButton, exportButton;
 
     // Fragment Vars
 
@@ -58,6 +58,9 @@ public class MenuFragment extends Fragment {
 
         // grab display vars
         mainButton = (Button) inflatedView.findViewById(R.id.mainButton);
+        scanButton = (Button) inflatedView.findViewById(R.id.scanButton);
+        editButton = (Button) inflatedView.findViewById(R.id.editButton);
+        exportButton = (Button) inflatedView.findViewById(R.id.exportButton);
 
         // change the main button accordingly
         Bundle args = getArguments();
@@ -76,8 +79,16 @@ public class MenuFragment extends Fragment {
         else {
             mainButton.setText(getString(R.string.menufrag_new));
         }
+        mainButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                mainButton.setVisibility(View.GONE);
+                scanButton.setVisibility(View.VISIBLE);
+                editButton.setVisibility(View.VISIBLE);
+                exportButton.setVisibility(View.VISIBLE);
+            }
+        });
     }
-
 
 
     /* ----------------------- GRABBING INPUT METHODS ----------------------- */

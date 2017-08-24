@@ -2,6 +2,9 @@
     <string name="app_name">Attendance</string>
     <string name="menufrag_continue">Continue previous session</string>
     <string name="menufrag_new">Create a new session</string>
+    <string name="menufrag_scan">Scan IDs</string>
+    <string name="menufrag_edit">View/Edit meeting data</string>
+    <string name="menufrag_export">Export meeting data</string>
     <string name="activity_scan_save">Save</string>
     <string name="activity_scan_exit">Exit</string>
 
