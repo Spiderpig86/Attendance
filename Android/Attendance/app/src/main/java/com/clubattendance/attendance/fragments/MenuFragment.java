@@ -25,6 +25,8 @@ import com.clubattendance.attendance.R;
 import com.clubattendance.attendance.activities.HomeActivity;
 import com.clubattendance.attendance.activities.ScanActivity;
 
+import static android.app.Activity.RESULT_CANCELED;
+
 /* ----------------------------- CLASS DEF ----------------------------- */
 
 public class MenuFragment extends Fragment {
@@ -114,10 +116,18 @@ public class MenuFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SCAN_REQUEST_MEMBERS) {
-            Toast.makeText(getActivity(), data.getStringExtra("members"), Toast
-                    .LENGTH_SHORT).show(); // Testing passing back data to this
-            // activity
+        if (requestCode == SCAN_REQUEST_MEMBERS && data != null) {
+
+            if (resultCode == RESULT_CANCELED) {
+                // Handle session exit and don't save anything
+                Toast.makeText(getActivity(), "Session disposed", Toast
+                        .LENGTH_SHORT).show();
+            } else {
+                // Process the members
+                Toast.makeText(getActivity(), data.getStringExtra("SCAN_MEMBERS"),
+                        Toast.LENGTH_SHORT).show(); // Testing passing back data to this
+                // activity
+            }
         }
     }
 }

@@ -4,14 +4,18 @@ package com.clubattendance.attendance.activities;
 
 // Android Imports
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
@@ -55,6 +59,10 @@ public class ScanActivity extends AppCompatActivity {
         // always call the super onCreate and set view first
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
+
+        // Set up the actionbar
+        Toolbar actionBar = (Toolbar) findViewById(R.id.scanActionBar);
+        setSupportActionBar(actionBar); // Set as the activity action bar
 
         // Bind UI elements to vars
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
@@ -193,6 +201,43 @@ public class ScanActivity extends AppCompatActivity {
                 break;
             default:
                 break;
+        }
+    }
+
+    /**
+     * Create the options menu
+     * @param menu
+     *      The menu.xml file we use
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the actionbar menu and add menu items
+        getMenuInflater().inflate(R.menu.scan_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_save:
+                // Pass back test data
+                Intent returnToHome = new Intent();
+                returnToHome.putExtra("SCAN_MEMBERS", "this is a test");
+                setResult(RESULT_OK, returnToHome); // Set status for
+                // returning to home
+                finish();
+                return true;
+            case R.id.action_exit:
+                Intent intentExit = new Intent();
+                intentExit.putExtra("SCAN_MEMBERS", "SESSION_EXIT");
+                setResult(RESULT_CANCELED, intentExit);
+                finish();
+                return true;
+
+            default:
+                // User's action was not recognized, let superclass hanlde it
+                return super.onOptionsItemSelected(item);
         }
     }
 }

@@ -96,4 +96,10 @@ public class HomeActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data); // Pass it to
+        // menufragment to handle
+    }
 }

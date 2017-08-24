@@ -11,6 +11,15 @@
     android:paddingBottom="0dp"
     tools:context="com.clubattendance.attendance.activities.ScanActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/scanActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
 
     <!-- View used to interface with camera -->
     <SurfaceView
