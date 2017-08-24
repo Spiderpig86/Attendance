@@ -30,6 +30,9 @@ import com.clubattendance.attendance.R;
 
 /* ------------------------- CLASS DEFINITION ------------------------- */
 
+/**
+ * Activity that scans member IDs.
+ */
 public class ScanActivity extends AppCompatActivity {
 
     /* ------------------------- DATA & VARS ------------------------- */
@@ -113,7 +116,7 @@ public class ScanActivity extends AppCompatActivity {
                  * @param width
                  *      The width of the surface.
                  * @param height
-                 *      The heght of the surface
+                 *      The height of the surface
                  */
                 @Override
                 public void surfaceChanged(SurfaceHolder surfaceHolder, int
