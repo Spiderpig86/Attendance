@@ -120,13 +120,11 @@ public class MenuFragment extends Fragment {
 
             if (resultCode == RESULT_CANCELED) {
                 // Handle session exit and don't save anything
-                Toast.makeText(getActivity(), "Session disposed", Toast
-                        .LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Session disposed", Toast.LENGTH_SHORT).show();
             } else {
                 // Process the members
-                Toast.makeText(getActivity(), data.getStringExtra("SCAN_MEMBERS"),
-                        Toast.LENGTH_SHORT).show(); // Testing passing back data to this
-                // activity
+                Toast.makeText(getActivity(), data.getStringExtra("SCAN_MEMBERS"), Toast.LENGTH_SHORT).show();
+                // Testing passing back data to HomeActivity
             }
         }
     }
