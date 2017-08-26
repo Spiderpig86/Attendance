@@ -12,6 +12,7 @@ import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Menu;
@@ -67,6 +68,9 @@ public class ScanActivity extends AppCompatActivity {
         // Bind UI elements to vars
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
         textView = (TextView) findViewById(R.id.textView);
+
+        // Allow scrolling in textview
+        textView.setMovementMethod(new ScrollingMovementMethod());
 
         // Create the text recognition engine
         TextRecognizer textRecognizer = new TextRecognizer.Builder
